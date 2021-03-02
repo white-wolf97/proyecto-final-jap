@@ -1,0 +1,59 @@
+﻿@model ProyectoFinal.Models.ProductoModel
+
+@{
+    ViewBag.Title = "Deshabilitar";
+}
+
+@using (Html.BeginForm("DeshabilitarProducto", "Producto"))
+{
+
+    @Html.HiddenFor(m => m.idProducto)
+
+    <h2>Deshabilitar</h2>
+
+    <h3>Está seguro que quiere deshabilitar este producto?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Nombre
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+
+            <dt>
+Marca            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.marca)
+            </dd>
+
+            <dt>
+                Precio
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.precio)
+            </dd>
+
+            <dt>
+                ID
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idProducto)
+            </dd>
+
+        </dl>
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deshabilitar" class="btn btn-danger" />
+            <a class="btn btn-default" href="/Producto/ListarProductosHabilitados">Volver</a>
+        </div>
+
+    </div>
+}

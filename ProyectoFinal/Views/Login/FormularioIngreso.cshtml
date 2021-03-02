@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sistema de facturación</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+    <body>
+        <div class="container" style="align-content:center">
+            <div class="jumbotron">
+                <h1 style="text-align:center">Sistema de facturación</h1>
+                <!-- Button trigger modal -->
+                <div class="row">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <span class="glyphicon glyphicon-log-in" style="width:auto; height:auto"></span> Login
+                        </button>
+                        
+                    </div>
+                    <div class="col-sm-5"></div>
+                </div>
+                <p class="text-danger" style="text-align:center">@ViewBag.message</p>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form action="/Usuario/VerificarIngreso" class="form-group row" method="post" style="align-content:center">
+                                <div class="container">
+                                    <label>
+                                        Nombre de usuario
+                                        <input type="text" class="form-control" placeholder="Ingrese su nombre de usuario" name="uname" required>
+                                    </label>
+                                    <br><label>
+                                        Password
+                                        <input type="password" class="form-control" placeholder="Ingrese su password" name="psw" required>
+                                    </label>
+                                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-log-in" style="width:auto; height:auto"></span> Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p>No tienes una cuenta?<a href="../Usuario/RegistrarUsuario"> Regístrate!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
+
+    </body>
+</html>

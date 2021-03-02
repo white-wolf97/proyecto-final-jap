@@ -1,0 +1,66 @@
+﻿@model ProyectoFinal.Models.FacturaModel
+
+@using (Html.BeginForm("Guardar", "Factura"))
+{
+    @Html.HiddenFor(m => m.cantidad);
+    @Html.HiddenFor(m => m.ci);
+    @Html.HiddenFor(m => m.Detalles);
+    @Html.HiddenFor(m => m.idFactura);
+    @Html.HiddenFor(m => m.idProducto);
+    @Html.HiddenFor(m => m.montoTotal);
+
+    <table class="table">
+        <tr>
+            <th>
+                Producto
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Precio unitario
+            </th>
+            <th>
+                Precio total
+            </th>
+            <th></th>
+        </tr>
+
+        @for (int i = 0; i < Model.Detalles.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => m.Detalles[i].nombreProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Detalles[i].marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Detalles[i].cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Detalles[i].precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Detalles[i].precioTotal)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total de la factura:
+            <td>@Model.montoTotal</td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            @Html.ActionLink("Cancelar", "Crear", "Factura", new { @class = "btn btn-default" })
+        </div>
+    </div>
+}

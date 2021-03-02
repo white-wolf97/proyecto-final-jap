@@ -1,0 +1,49 @@
+﻿@model ProyectoFinal.Models.ClienteModel
+
+@{
+    ViewBag.Title = "Detalles";
+}
+<div class="jumbotron" style="background-color: rgba(255,255,255,0.6)">
+    <h2>Detalles</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Nombre
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+
+            <dt>
+                CI
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ci)
+            </dd>
+
+            <dt>
+                Domicilio
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.domicilio)
+            </dd>
+
+            <dt>
+                Fecha de nacimiento
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fechaNacimiento)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    <a class="btn btn-default" href="/Cliente/ListarClientesHabilitados">Volver</a>
+</p>

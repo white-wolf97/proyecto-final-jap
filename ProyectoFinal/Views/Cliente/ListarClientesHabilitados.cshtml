@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ProyectoFinal.Models.ClienteModel>
+
+@{
+    ViewBag.Title = "Lista de clientes";
+    bool esAdmin = (bool)Session["esAdmin"];
+}
+
+@if (Model.Count() != 0)
+{
+    <div class="jumbotron" style="background-color: rgba(255,255,255,0.6)">
+        <h2>Lista de clientes habilitados en el sistema</h2>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    CI
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ci)
+                    </td>
+                    <td>
+                        @if (esAdmin)
+                        { 
+                            @Html.ActionLink("Editar", "Editar", new { id = item.ci }, new { @class = "btn btn-default" });
+                            @Html.ActionLink("Dar de baja", "Deshabilitar", new { id = item.ci }, new { @class = "btn btn-danger" });
+                        }
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.ci }, new { @class = "btn btn-info" })
+
+                    </td>
+                </tr>
+                        }
+            <tr>
+                <td></td>
+                <td></td>
+                @if (esAdmin)
+                {
+                <td>
+                    <a class="btn btn-danger" href="/Cliente/DeshabilitarTodos">Deshabilitar Todos</a>
+                </td>
+                }
+            </tr>
+
+        </table>
+    </div>
+            }
+else
+{
+                <h2>La lista seleccionada está vacía</h2>
+    }
+<a class="btn btn-info" href="ListarClientesDeshabilitados">Ver Clientes Deshabilitados &raquo;</a>
+<a class="btn btn-default" href="../Inicio/Home">Volver</a>
+

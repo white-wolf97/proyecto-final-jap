@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ProyectoFinal.Models.ProductoModel>
+
+@{
+    ViewBag.Title = "Listar Productos Habilitados";
+    bool esAdmin = (bool)Session["esAdmin"];
+}
+
+@if (Model.Count() != 0)
+{
+    <div class="jumbotron" style="background-color: rgba(255,255,255,0.6)">
+        <h2>Lista de productos habilitados en el sistema</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Marca
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    ID
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idProducto)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.idProducto }, new { @class = "btn btn-info" })
+                     @if (esAdmin)
+                     {
+                         @Html.ActionLink("Editar", "Editar", new { id = item.idProducto }, new { @class = "btn btn-default" });
+                         @Html.ActionLink("Dar de baja", "Deshabilitar", new { id = item.idProducto }, new { @class = "btn btn-danger" });
+                     }
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @if (esAdmin)
+                    {
+                    <a class="btn btn-danger" href="../Producto/DeshabilitarTodos">Deshabilitar Todos</a>
+                    }
+                </td>
+
+            </tr>
+        </table>
+    </div>
+}
+else
+{
+    <h2>La lista seleccionada está vacía</h2>
+}
+
+<a class="btn btn-info" href="../Producto/ListarProductosDeshabilitados">Ver Productos Deshabilitados &raquo;</a>
+<a class="btn btn-default" href="../Inicio/Home">Volver</a>

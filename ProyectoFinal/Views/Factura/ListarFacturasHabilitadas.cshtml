@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProyectoFinal.Models.FacturaModel>
+
+@{
+    ViewBag.Title = "Lista de facturas habilitadas";
+    bool esAdmin = (bool)Session["esAdmin"];
+}
+
+@if (Model.Count() != 0)
+{
+
+
+    <div class="jumbotron" style="background-color: rgba(255,255,255,0.6)">
+        <h2>Lista de facturas habilitadas</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Cédula del cliente
+                </th>
+                <th>
+                    Monto total
+                </th>
+                <th>
+                    Opciones
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idFactura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ci)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montoTotal)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalles", "Detalles", new { idFactura = item.idFactura }, new { @class = "btn btn-info" })
+                       @if (esAdmin)
+                       {
+                        @Html.ActionLink("Deshabilitar", "Deshabilitar", new { idFactura = item.idFactura }, new { @class = "btn btn-danger" })
+                       }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+}
+else
+{
+    <h2>La lista de factras habilitadas está vacía</h2>
+}
+
+
+<a class="btn btn-info" href="ListarFacturasDeshabilitadas">Ver facturas deshabilitadas &raquo;</a>
+<a class="btn btn-default" href="../Inicio/Home">Volver</a>

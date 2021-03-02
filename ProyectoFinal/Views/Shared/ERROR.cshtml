@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="align-content:center">
+    <h1>Error al procesar la solicitud</h1>
+    <h2 class="text-danger">@ViewBag.message</h2>
+    <img src="http://tusimagenesde.com/wp-content/uploads/2017/03/cara-troll-1.jpg">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>

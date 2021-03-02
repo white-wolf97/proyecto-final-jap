@@ -1,0 +1,39 @@
+﻿@model ProyectoFinal.Models.FacturaModel
+
+@{
+    ViewBag.Title = "Detalles";
+}
+<div class="jumbotron" style="background-color: rgba(255,255,255,0.6)">
+    <h2>Detalles</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                ID
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idFactura)
+            </dd>
+
+            <dt>
+                Cédula del cliente
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ci)
+            </dd>
+            <dt>
+                Fecha
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha)
+            </dd>
+
+        </dl>
+    </div>
+
+    @Html.Partial("_ListaDetalles2", Model)
+    </div>
